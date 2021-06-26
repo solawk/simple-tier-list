@@ -147,7 +147,7 @@ async function mongoConnect()
 {
 	try
 	{
-		const connection = await mongoose.connect("mongodb+srv://Server:tierlistpassword@simpletierlistdb.df96m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+		const connection = await mongoose.connect("mongodb+srv://Server:" + process.env.PASSWORD + "@simpletierlistdb.df96m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 			{
 				useNewUrlParser: true,
 				useUnifiedTopology: true,
