@@ -1,13 +1,13 @@
 const ratings = ["S", "A", "B", "C", "D", "E", "F", "Без оценки"];
 const ratingColors =
 	[
-		"rgb(200, 50, 50)",
-		"rgb(200, 130, 50)",
-		"rgb(200, 200, 50)",
-		"rgb(130, 200, 50)",
-		"rgb(50, 200, 200)",
-		"rgb(80, 130, 200)",
-		"rgb(80, 80, 200)",
+		"rgb(240, 50, 50)",
+		"rgb(240, 160, 50)",
+		"rgb(240, 240, 50)",
+		"rgb(160, 240, 50)",
+		"rgb(50, 240, 240)",
+		"rgb(50, 130, 240)",
+		"rgb(80, 0, 240)",
 	];
 
 async function getPrepods(ip)
@@ -22,7 +22,9 @@ async function getPrepods(ip)
 
 	if (res.ok)
 	{
-		return await res.json();
+		const receivedPrepods = await res.json();
+		receivedPrepods.sort((a, b) => { return a.name.localeCompare(b.name) });
+		return receivedPrepods;
 	}
 	else
 	{

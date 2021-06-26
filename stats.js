@@ -6,6 +6,7 @@ function setupTierlist()
 	const tierlistTable = document.createElement("table");
 	tierlistTable.style.width = "100%";
 	tierlistTable.style.height = "40em";
+	tierlistTable.className = "table";
 	contentDiv.appendChild(tierlistTable);
 
 	for (const rating of ratings)
@@ -27,11 +28,14 @@ function setupTierlist()
 		tierRow.appendChild(tierPrepods);
 
 		tierRating.innerHTML = rating;
-		tierRating.style.width = "10%";
+		tierRating.style.width = "auto";
+		tierRating.style.padding = "0.3em";
 		tierRating.style.color = "#eeeeee";
 		tierRating.style.textAlign = "center";
 		tierRating.style.backgroundColor = ratingColors[ratings.indexOf(rating)];
-		tierRating.style.fontSize = "2em";
+		tierRating.style.fontSize = "3em";
+		tierRating.style.fontWeight = "bold";
+		tierRating.style.textShadow = "black 0px 0px 4px";
 
 		tierPrepods.style.backgroundColor = "#333333";
 		tierPrepods.style.color = "#eeeeee";
@@ -54,21 +58,57 @@ function processPrepod(prepod)
 
 	if (rating == null) return; // No ratings
 
-	document.getElementById(rating).innerHTML += "&nbsp;&nbsp;" + prepod.name;
+	if (document.getElementById(rating).innerHTML !== "")
+	{
+		document.getElementById(rating).innerHTML += "&#160;&#160;&#160;&#160;";
+	}
+
+	let tooltip = generateTooltip(prepod);
+
+	const prepodHTML = '<div class="mytooltip">' + prepod.name + '<span class="mytooltiptext">&nbsp;' + tooltip + '&nbsp;</span></div>';
+	document.getElementById(rating).innerHTML += prepodHTML;
+}
+
+function generateTooltip(prepod)
+{
+	const tooltipRatingStructs = {};
+
+	for (const r of ratings)
+	{
+		if (r === "Без оценки") continue;
+
+		tooltipRatingStructs[r] = 0;
+	}
+
+	for (const ratingStruct of prepod.ratings)
+	{
+		tooltipRatingStructs[ratingStruct.rating]++;
+	}
+
+	let tooltip = "";
+
+	for (const r of ratings)
+	{
+		if (r === "Без оценки") continue;
+
+		tooltip += "<b>" + r + "</b>:&nbsp;" + tooltipRatingStructs[r] + (r !== ratings[ratings.length - 2] ? ",&nbsp;" : "");
+	}
+
+	return tooltip;
 }
 
 function evaluatePrepod(prepod, evalFunc)
 {
-	const ratingsStructs = prepod.ratings;
 	const ratingsInts = [];
 
-	for (const ratingStruct of ratingsStructs)
+	for (const ratingStruct of prepod.ratings)
 	{
 		const ratingInt = ratings.indexOf(ratingStruct.rating);
 		ratingsInts.push(ratingInt);
 	}
 
-	const finalRatingFloat = evalFunc(ratingsInts);
+	const bias = 0.001;
+	const finalRatingFloat = evalFunc(ratingsInts) - bias;
 	const finalRatingInt = Math.round(finalRatingFloat);
 
 	return ratings[finalRatingInt];

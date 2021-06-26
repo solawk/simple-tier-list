@@ -48,11 +48,17 @@ app.get("/api/prepods", (req, res) =>
 
 			if (clientIP == null) // Wants all ratings
 			{
+				const lightRatings = [];
+				for (const ratingStruct of prepod.ratings)
+				{
+					lightRatings.push({ rating: ratingStruct.rating });
+				}
+
 				responsePrepod =
 					{
 						name: prepod.name,
 						desc: prepod.desc,
-						ratings: prepod.ratings
+						ratings: lightRatings
 					};
 			}
 			else

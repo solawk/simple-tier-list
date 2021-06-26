@@ -100,8 +100,6 @@ function displayPrepodsRatingTable()
 	const tableBody = document.createElement("tbody");
 	table.appendChild(tableBody);
 
-	prepods.sort((a, b) => { return a.name.localeCompare(b.name) });
-
 	prepods.forEach(prepod =>
 	{
 		appendPrepod(prepod, tableBody);

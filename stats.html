@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width" />
     <title>Simple Tier List</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .mytooltip
+        {
+            position: relative;
+            display: inline-block;
+        }
+
+        .mytooltip .mytooltiptext
+        {
+            visibility: hidden;
+            width: auto;
+            background-color: #111111;
+            color: #fff;
+            text-align: center;
+            padding: 0 0;
+            border-radius: 6px;
+
+            position: absolute;
+            z-index: 1;
+        }
+
+        .mytooltip:hover .mytooltiptext
+        {
+            visibility: visible;
+        }
+    </style>
 </head>
 <body style="margin-left: 2em">
 <h1>Тир-лист преподавателей</h1>
