@@ -82,7 +82,7 @@ function displayPrepodsRatingTable()
 {
 	const contentDiv = document.getElementById("content");
 	const table = document.createElement("table");
-	table.className = "table";
+	table.className = "table table-hover";
 	table.id = "prepodList";
 	contentDiv.appendChild(table);
 	const tableHead = document.createElement("thead");

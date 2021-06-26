@@ -147,6 +147,7 @@ async function mongoConnect()
 {
 	try
 	{
+		// DON'T FORGET TO REVERT TO process.env.PASSWORD
 		const connection = await mongoose.connect("mongodb+srv://Server:" + process.env.PASSWORD + "@simpletierlistdb.df96m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 			{
 				useNewUrlParser: true,
