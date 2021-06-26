@@ -65,7 +65,7 @@ function processPrepod(prepod)
 
 	let tooltip = generateTooltip(prepod);
 
-	const prepodHTML = '<div class="mytooltip">' + prepod.name + '<span class="mytooltiptext">&nbsp;' + tooltip + '&nbsp;</span></div>';
+	const prepodHTML = '<div class="mytooltip">&nbsp;' + prepod.name + '<span class="mytooltiptext">&nbsp;(' + tooltip + ')&nbsp;</span></div>';
 	document.getElementById(rating).innerHTML += prepodHTML;
 }
 

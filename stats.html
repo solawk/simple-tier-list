@@ -8,27 +8,25 @@
     <style>
         .mytooltip
         {
-            position: relative;
             display: inline-block;
+            background-color: rgba(0, 0, 0, 0);
         }
 
         .mytooltip .mytooltiptext
         {
-            visibility: hidden;
-            width: auto;
-            background-color: #111111;
-            color: #fff;
-            text-align: center;
-            padding: 0 0;
-            border-radius: 6px;
-
-            position: absolute;
-            z-index: 1;
+            display: none;
+            font-weight: normal;
         }
 
         .mytooltip:hover .mytooltiptext
         {
-            visibility: visible;
+            display: inline-block;
+        }
+
+        .mytooltip:hover
+        {
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 255);
         }
     </style>
 </head>
