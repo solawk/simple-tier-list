@@ -3,7 +3,7 @@ let prepods = null;
 
 async function getIP()
 {
-	const ip = await fetch("http://api.ipify.org",
+	const ip = await fetch("https://api.ipify.org",
 		{
 			method: "GET",
 			headers: { "Accept": "application/text" }
