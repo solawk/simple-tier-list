@@ -1,5 +1,5 @@
 # simple-tier-list
-Simple tier list application to rate my university professors for fun. Made with Node.js + Express + Mongoose
+Simple tier list application to rate my university professors for fun. Made with Node.js + Express + Mongoose.
 
 Generates a MongoDB collection, model Prepod stores information about the professors and their ratings, supplied with the ip-addresses of the voters.
 Professors are stored in the **prepodsList.json** file, adding a person there makes the server add them to the database, info editing or removal is done manually.
